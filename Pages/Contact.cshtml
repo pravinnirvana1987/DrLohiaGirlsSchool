@@ -1,0 +1,35 @@
+﻿@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="Enquiry.Name"></label>
+        <input asp-for="Enquiry.Name" />
+        <span asp-validation-for="Enquiry.Name"></span>
+    </div>
+    <div>
+        <label asp-for="Enquiry.Email"></label>
+        <input asp-for="Enquiry.Email" type="email" />
+        <span asp-validation-for="Enquiry.Email"></span>
+    </div>
+    <div>
+        <label asp-for="Enquiry.Message"></label>
+        <textarea asp-for="Enquiry.Message"></textarea>
+        <span asp-validation-for="Enquiry.Message"></span>
+    </div>
+    <button type="submit">Send</button>
+</form>
+
+@if (Model.SuccessMessage != null)
+{
+    <div class="alert alert-success">@Model.SuccessMessage</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
